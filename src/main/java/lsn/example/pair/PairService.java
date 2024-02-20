@@ -1,9 +1,7 @@
 package lsn.example.pair;
 
-import lsn.example.io.InputValidator;
 import lsn.example.io.PrintService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,13 +11,11 @@ public class PairService {
 
     private static PairService instance;
     private final PrintService printService;
-    private final InputValidator inputValidator;
     private final int goal = 13; //it won't work for even numbers
     private final int overHalf = (int) Math.ceil((double) goal / 2);
 
     private PairService() {
         printService = PrintService.getInstance();
-        inputValidator = InputValidator.getInstance();
     }
 
     public static PairService getInstance() {
@@ -29,8 +25,7 @@ public class PairService {
         return instance;
     }
 
-    public void findPairs(String input) throws IOException, NumberFormatException {
-        inputValidator.validateInput(input);
+    public void findPairs(String input) throws NumberFormatException {
         Map<Integer, Integer> frequencyMap = createSortedFrequencyMap(input);
         List<Pair> pairs = pairUp(frequencyMap);
         printService.printCorrectOutput(pairs);
