@@ -1,6 +1,6 @@
 package lsn.example.io;
 
-import lsn.example.Pair;
+import lsn.example.pair.Pair;
 
 import java.util.List;
 

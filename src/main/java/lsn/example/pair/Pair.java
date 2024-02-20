@@ -1,4 +1,4 @@
-package lsn.example;
+package lsn.example.pair;
 
 public class Pair {
 

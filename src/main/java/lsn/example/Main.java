@@ -1,6 +1,6 @@
 package lsn.example;
 
-import lsn.example.input.InputProceeder;
+import lsn.example.pair.PairService;
 import lsn.example.io.PrintService;
 import lsn.example.io.ReadService;
 
@@ -10,7 +10,7 @@ public class Main {
         //init singleton instances
         PrintService printService = PrintService.getInstance();
         ReadService readService = ReadService.getInstance();
-        InputProceeder inputProceeder = InputProceeder.getInstance();
+        PairService pairService = PairService.getInstance();
 
         //run app in a loop
         while (true) {
@@ -20,7 +20,7 @@ public class Main {
                     printService.printExit();
                     break;
                 }
-                inputProceeder.findPairs(input);
+                pairService.findPairs(input);
             } catch (Exception exception) {
                 printService.printExceptionMessage(exception.getMessage());
             }

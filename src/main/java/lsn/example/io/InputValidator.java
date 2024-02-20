@@ -1,4 +1,4 @@
-package lsn.example.input;
+package lsn.example.io;
 
 import java.io.IOException;
 import java.util.regex.Matcher;

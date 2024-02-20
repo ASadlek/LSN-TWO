@@ -1,6 +1,6 @@
-package lsn.example.input;
+package lsn.example.pair;
 
-import lsn.example.Pair;
+import lsn.example.io.InputValidator;
 import lsn.example.io.PrintService;
 
 import java.io.IOException;
@@ -9,22 +9,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class InputProceeder {
+public class PairService {
 
-    private static InputProceeder instance;
+    private static PairService instance;
     private final PrintService printService;
     private final InputValidator inputValidator;
     private final int goal = 13; //it won't work for even numbers
     private final int overHalf = (int) Math.ceil((double) goal / 2);
 
-    private InputProceeder() {
+    private PairService() {
         printService = PrintService.getInstance();
         inputValidator = InputValidator.getInstance();
     }
 
-    public static InputProceeder getInstance() {
+    public static PairService getInstance() {
         if (instance == null) {
-            instance = new InputProceeder();
+            instance = new PairService();
         }
         return instance;
     }
@@ -32,7 +32,7 @@ public class InputProceeder {
     public void findPairs(String input) throws IOException, NumberFormatException {
         inputValidator.validateInput(input);
         Map<Integer, Integer> frequencyMap = createSortedFrequencyMap(input);
-        List<Pair> pairs = getPairs(frequencyMap);
+        List<Pair> pairs = pairUp(frequencyMap);
         printService.printCorrectOutput(pairs);
     }
 
@@ -51,7 +51,7 @@ public class InputProceeder {
         return frequencyMap;
     }
 
-    private List<Pair> getPairs(Map<Integer, Integer> frequencyMap) {
+    private List<Pair> pairUp(Map<Integer, Integer> frequencyMap) {
         List<Pair> pairs = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
             int lowerValue = entry.getKey();
