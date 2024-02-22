@@ -19,7 +19,7 @@ public class InputValidator {
     }
 
     public void validateInput(String input) throws IOException {
-        String pattern = "^-?\\d+(\\s+-?\\d+)*$";
+        String pattern = "^-?\\d+(\\s-?\\d+)*$";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(input);
         if (!matcher.matches()) {
